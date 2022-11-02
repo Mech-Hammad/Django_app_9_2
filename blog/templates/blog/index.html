@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<h1>This is the home page</h1>
+<div class="container">
+    {% for obj in post_list %}
+    <div class="card m-3">
+        <div class="card-body">
+            <h2 class="card-title">
+                {{obj.title}}
+            </h2>
+            <p class="card-text">
+                {{obj.content | slice:"400"}}
+            </p>
+            <p class="card-text">
+                Author: {{obj.author | title}}
+            </p>
+            <a class="btn btn-primary" href="{% url 'blog_view' obj.slug %}">Read More</a>
+
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
